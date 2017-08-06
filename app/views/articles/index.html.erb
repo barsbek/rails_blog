@@ -6,6 +6,7 @@
       <%= article.title %>
       <%= link_to 'show', article %>
       <%= link_to 'edit', edit_article_path(article) %>
+      <%= link_to 'delete', article, method: :delete, data: {confirm: 'Delete?'} %>
     </li>
   <% end %>
 </ul>

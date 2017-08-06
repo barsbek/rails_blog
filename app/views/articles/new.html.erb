@@ -1,4 +1,12 @@
 <h1>New Article</h1>
+<% # TODO move errors under corresponding fields %>
+<% if @article.errors.any? %>
+  <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
 <%= form_for :article, url: articles_path do |f| %>
   <p>
     <%= f.label :title %>

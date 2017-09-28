@@ -6,4 +6,8 @@ class User < ApplicationRecord
   validates_presence_of :login, :name, :email
   validates :email, email: true, uniqueness: true
   validates :login, length: {minimum: 2}
+  validates :password, presence: true, length: {minimum: 6}, confirmation: true,
+    on: :create
+  validates :password, presence: true, length: {minimum: 6}, confirmation: true,
+    allow_blank: true, on: :update
 end

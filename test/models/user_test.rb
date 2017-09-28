@@ -3,12 +3,6 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = users(:one)
-    @new_user = User.new(
-      name: "new name",
-      login: "new login",
-      email: "new@email.com",
-      password: "newpass"
-    )
   end
 
   test "valid user" do
@@ -24,20 +18,23 @@ class UserTest < ActiveSupport::TestCase
 
   [:login, :email].each do |attr|
     test "uniqueness of #{attr}" do
-      @new_user[attr] = @user[attr]
-      assert_not @new_user.valid?, "#{attr} is not unique"
+      duplicate_user = @user.dup
+      duplicate_user.valid?
+      assert_not_empty duplicate_user.errors[attr], "#{attr} is not unique"
     end
   end
 
   {password: 6, login: 2}.each do |attr, length|
-    test "#{attr} length" do
+    test "#{attr} on invalid length" do
       @user[attr] = 's'
-      refute @user.valid?, "#{attr} of length < #{length}"
+      @user.valid?
+      assert_not_empty @user.errors[attr]
     end
   end
 
-  test "email validity" do
+  test "on invalid email" do
+    @user[:email] = "not_email"
     @user.valid?
-    assert_empty @user.errors[:email]
+    assert_not_empty @user.errors[:email], "saving invalid email"
   end
 end

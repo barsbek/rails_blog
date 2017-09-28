@@ -2,8 +2,8 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one) # from fixtures
-    @new_user = { # this one is not in db
+    @user = users(:one)
+    @user_params = {
       name: 'new name',
       email: 'new@email.com',
       login: 'new long',
@@ -23,7 +23,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, params: { user: @new_user }
+      post users_url, params: { user: @user_params }
     end
 
     assert_redirected_to user_url(User.last)
@@ -40,7 +40,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: @new_user }
+    patch user_url(@user), params: { user: @user_params }
     assert_redirected_to user_url(@user)
   end
 

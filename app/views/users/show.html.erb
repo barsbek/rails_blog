@@ -18,5 +18,5 @@
 <%= link_to 'Back', users_path %>
 
 <p>
-  <img src="<%= @user.avatar.url(:medium) %>">
+  <img src="<%= @user.avatar.url(:medium) if @user.methods.include?(:avatar) %>">
 </p>

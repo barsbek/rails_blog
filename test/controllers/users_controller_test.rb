@@ -2,12 +2,13 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = users(:valid)
     @user_params = {
       name: 'new name',
       email: 'new@email.com',
-      login: 'new long',
-      password: 'new password'
+      login: 'new login',
+      password: 'new_password',
+      password_confirmation: 'new_password'
     }
   end
 

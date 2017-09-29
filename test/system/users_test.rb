@@ -9,6 +9,7 @@ class UsersTest < ApplicationSystemTestCase
       password: 'new password',
       password_confirmation: 'new password'
     }
+    #TODO variable is duplicated - move into one place
   end
 
   test "creating a user" do
@@ -19,6 +20,16 @@ class UsersTest < ApplicationSystemTestCase
 
     click_on "Create User"
 
-    assert_text "User was successfully created"
+    assert_text "Signed up!"
+  end
+
+  test "user log in" do
+    assert User.create(@params)
+
+    visit log_in_path
+    fill_in "email", with: @params[:email]
+    fill_in "password", with: @params[:password]
+
+    click_on "Log in"
   end
 end

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <header>
+      <% if admin_user %>
+        <div>Logged in as: <%= admin_user.login %></div>
+        <div><%= link_to 'log out', admin_log_out_path %></div>
+      <% else %>
+        <%= link_to 'log in', admin_log_in_path %>
+      <% end %>
+    </header>
+    <%= yield %>
+  </body>
+</html>

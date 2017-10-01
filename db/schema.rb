@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170928234629) do
+ActiveRecord::Schema.define(version: 20171001194537) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "login"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["login"], name: "index_admins_on_login"
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string "title"

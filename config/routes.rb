@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   # TODO change actions names 
   # TODO DRY
 
+  resources :users, except: [:index]
 
   namespace :admin do 
     root "base#index"
     get "log_in", to: "base#log_in"
     post "log_in", to: "base#authenticate"
     get "log_out", to: "base#log_out"
-    resources :users
+    resources :users, only: [:index, :destroy]
   end
 end

@@ -7,8 +7,7 @@ class SessionsController < ApplicationController
 
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Logged In!"
-      #TODO redirect to last url if exists
+      redirect_to user, notice: "Logged In!"
     else
       render "new"
     end

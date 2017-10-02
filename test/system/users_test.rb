@@ -26,7 +26,7 @@ class UsersTest < ApplicationSystemTestCase
   test "user log in" do
     assert User.create(@params)
 
-    visit users_url
+    visit root_url
     click_on "log in"
 
     fill_in "email", with: @params[:email]

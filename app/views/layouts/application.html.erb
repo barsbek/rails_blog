@@ -10,10 +10,13 @@
   <body>
   <div id="user_nav">
     <% if current_user %>
-      Logged in as <%= current_user.login %>.
-      <%= link_to "Log out", log_out_path %>
+      Logged in as
+      <%= link_to current_user.login, current_user %>.
+      <%= link_to "log out", log_out_path %>
     <% else %>
       <%= link_to "log in", log_in_path %>
+      or
+      <%= link_to "sign up", new_user_path %>
     <% end %>
   </div>
     <%= yield %>

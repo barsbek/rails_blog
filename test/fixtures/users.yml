@@ -4,8 +4,10 @@ valid:
   name: first name
   email: one@email.com
   login: one_login
+  password_digest: <%= BCrypt::Password.create('password', cost: 5) %>
 
 two:
   name: second name
   email: another@email.com
   login: another_login
+  password_digest: <%= BCrypt::Password.create('password', cost: 5) %>

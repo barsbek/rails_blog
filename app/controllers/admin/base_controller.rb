@@ -1,7 +1,7 @@
 class Admin::BaseController < ApplicationController
   before_action :require_login, except: [:log_in, :authenticate]
-  helper_method :admin_user  
-  layout :admin
+  helper_method :admin_user
+  layout "admin"
 
   def index
   end

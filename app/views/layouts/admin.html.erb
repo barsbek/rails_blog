@@ -11,7 +11,7 @@
     <header>
       <% if admin_user %>
         <div>Logged in as: <%= admin_user.login %></div>
-        <div><%= link_to 'log out', admin_log_out_path %></div>
+        <div><%= link_to 'log out', admin_log_out_path(admin_user) %></div>
       <% else %>
         <%= link_to 'log in', admin_log_in_path %>
       <% end %>

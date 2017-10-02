@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root "articles#index"
   resources :articles
-  get :log_in, to: "sessions#new"
-  post :log_in, to: "sessions#create"
-  get :log_out, to: "sessions#destroy"
+  get :log_in, to: "sessions#log_in"
+  post :log_in, to: "sessions#authenticate"
+  get :log_out, to: "sessions#log_out"
   # TODO change actions names 
   # TODO DRY
 

@@ -19,7 +19,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "user login" do
     post log_in_path, params: {email: @params[:email], password: @params[:password]}
-    assert_redirected_to users_url
+    assert_redirected_to @user
   end
 
   test "incorrect password" do

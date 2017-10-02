@@ -22,12 +22,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       email: @user.email,
       password: :password # no way to extract it
     }
-  end
-
-  test "should log in" do
-    log_in
-    assert_redirected_to @user
-  end    
+  end 
 
   test "should get new" do
     get new_user_url

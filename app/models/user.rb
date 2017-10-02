@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :email, :login
   validates :email, email: true
   validates :login, length: {minimum: 2}
-  validates :password, length: {minimum: 6}
+  validates :password, allow_nil: true, length: {minimum: 6}
 
   unless Rails.env == 'test'
     has_attached_file :avatar,
